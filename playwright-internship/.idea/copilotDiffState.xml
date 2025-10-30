@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/src/test/java/BrowserTest.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/test/java/BrowserTest.java" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/test/java/OpenBrowser.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/test/java/OpenBrowser.java" />
+              <option name="originalContent" value="import com.microsoft.playwright.*;&#10;&#10;public class OpenBrowser {&#10;    public static void main(String[] args) {&#10;        try (Playwright playwright = Playwright.create()) {&#10;            Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions()&#10;                .setChannel(&quot;chrome&quot;)&#10;                .setHeadless(false));&#10;            Page page = browser.newPage();&#10;            page.navigate(&quot;https://qa-sandbox.ni.htec.rs/&quot;);&#10;            Thread.sleep(5000); // Keep browser open for 5 seconds&#10;            browser.close();&#10;        } catch (Exception e) {&#10;            e.printStackTrace();&#10;        }&#10;    }&#10;}&#10;&#10;" />
+              <option name="updatedContent" value="import com.microsoft.playwright.*;&#10;&#10;public class OpenBrowser {&#10;    public static void main(String[] args) {&#10;        try (Playwright playwright = Playwright.create()) {&#10;            Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions()&#10;                .setHeadless(false));&#10;            BrowserContext context = browser.newContext();&#10;            Page page = context.newPage();&#10;            page.navigate(&quot;https://qa-sandbox.ni.htec.rs/&quot;);&#10;            Thread.sleep(50000); // Keep browser open for 50 seconds&#10;            browser.close();&#10;        } catch (Exception e) {&#10;            e.printStackTrace();&#10;        }&#10;    }&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/test/java/tests/LoginTests.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/test/java/tests/LoginTests.java" />
+              <option name="updatedContent" value="package tests;&#10;// ...existing code...&#10;import io.qameta.allure.Description;&#10;import org.testng.annotations.Test;&#10;import static org.testng.Assert.assertTrue;&#10;// ...existing code...&#10;public class LoginTests extends TestBase {&#10;// ...existing code...&#10;" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

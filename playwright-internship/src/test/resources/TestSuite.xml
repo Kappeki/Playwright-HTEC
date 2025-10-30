@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="TestSuite">
+    <test name="TestCases tests">
+        <groups>
+            <run>
+                <include name="smoke"/>
+                <include name="regression"/>
+                <include name="ui"/>
+                <include name="negative"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="tests.TestCaseTests"/>
+        </classes>
+    </test>
+</suite>
