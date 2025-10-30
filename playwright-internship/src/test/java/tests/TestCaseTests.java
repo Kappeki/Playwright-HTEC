@@ -4,6 +4,7 @@ import assertion.TestCaseAsserts;
 import base.TestBase;
 import io.qameta.allure.Allure;
 import jdk.jfr.Description;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.TestCasePage;
 import utils.AllureLogger;
