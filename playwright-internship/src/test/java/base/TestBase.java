@@ -5,10 +5,13 @@ import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 import com.microsoft.playwright.Tracing;
+import io.qameta.allure.Allure;
 import org.testng.annotations.*;
 import pages.LoginPage;
 import pages.TestCasePage;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.nio.file.Paths;
 
 import static utils.ConfigReader.getBaseUrl;
@@ -50,6 +53,11 @@ public class TestBase {
             String screenShotPath = "screenshots/" + System.currentTimeMillis() + ".png";
             page.context().tracing().stop(new Tracing.StopOptions().setPath(Paths.get(tracePath)));
             page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get(screenShotPath)));
+            try (FileInputStream fis = new FileInputStream(screenShotPath)) {
+                Allure.addAttachment("Screenshot", fis);
+            } catch (IOException e) {
+                System.err.println("Failed to attach screenshot: " + e.getMessage());
+            }
         } else {
             page.context().tracing().stop();
         }
