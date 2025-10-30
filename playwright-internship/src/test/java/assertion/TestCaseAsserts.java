@@ -56,6 +56,12 @@ public class TestCaseAsserts {
         Assert.assertTrue(isOnDashboard, "Clicking the back arrow did not navigate to the Dashboard page.");
     }
 
+    public void validateClickBackButtonFail(TestCasePage testCasePage) {
+        boolean isOnDashboard = testCasePage.isOnDashboard();
+
+        Assert.assertTrue(!isOnDashboard, "Clicking the back arrow did not navigate to the Dashboard page.");
+    }
+
     //Negative
     public void validateUpdateTestCaseInvalidData(TestCasePage testCasePage) {
         boolean hasValidationMsg = testCasePage.isValidationMessageVisible("Test case name already exist");

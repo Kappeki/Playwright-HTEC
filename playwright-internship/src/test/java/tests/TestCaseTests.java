@@ -138,6 +138,26 @@ public class TestCaseTests extends TestBase {
         testCaseAsserts.validateClickBackButton(testCasePage);
     }
 
+    @Test(groups = {"ui"},
+            description = "Navigate using back button - but test always fails"
+    )
+    public void testNavigateBackButtonThatAlwaysFails() {
+        testCasePage = new TestCasePage(page);
+
+        AllureLogger.logStep("Login with valid credentials");
+        loginPage.loginExpectSuccess(getValidEmail(), getValidPassword());
+
+        AllureLogger.logStep("Navigate to Test Cases page");
+        testCasePage.navigateToTestCases(getBaseUrl() + "testcases");
+
+        AllureLogger.logStep("Clicking back button on Test Cases page");
+        testCasePage.clickNavigateBackButton();
+
+        AllureLogger.logStep("Verifying that navigation leads back to Dashboard");
+        TestCaseAsserts testCaseAsserts = new TestCaseAsserts();
+        testCaseAsserts.validateClickBackButtonFail(testCasePage);
+    }
+
     //Negative
     @Test(groups = {"negative"},
             description = "Verify that updating a test case with an already existing title shows validation error and fails to save.",
@@ -191,13 +211,5 @@ public class TestCaseTests extends TestBase {
         AllureLogger.logStep("Verifying that validation error is displayed and form submission fails");
         TestCaseAsserts testCaseAsserts = new TestCaseAsserts();
         testCaseAsserts.validateCreateWithoutExpectedResult(testCasePage);
-    }
-
-    @Test(groups = {"negative"},
-            description = "Always fails",
-            priority = 99
-    )
-    public void testFail() {
-        Assert.fail("Always fails");
     }
 }
