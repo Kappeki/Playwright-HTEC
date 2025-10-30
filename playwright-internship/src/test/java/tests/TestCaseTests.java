@@ -192,4 +192,12 @@ public class TestCaseTests extends TestBase {
         TestCaseAsserts testCaseAsserts = new TestCaseAsserts();
         testCaseAsserts.validateCreateWithoutExpectedResult(testCasePage);
     }
+
+    @Test(groups = {"negative"},
+            description = "Always fails",
+            priority = 99
+    )
+    public void testFail() {
+        Assert.fail("Always fails");
+    }
 }
